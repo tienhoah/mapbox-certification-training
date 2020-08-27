@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 
-import Mapbox from "./components/Mapbox";
+import Main from "./components/Main";
 
 function App() {
   return (
     <>
-      <Mapbox />
+      <Main />
     </>
   );
 }
