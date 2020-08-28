@@ -4,14 +4,26 @@ import styled from "styled-components";
 
 const StyledBox = styled(Box)`
   z-index: 1000;
-  margin: 10px auto auto 10px;
+  margin: 10px;
+`;
+
+const ButtonWrapper = styled(Box)`
+  position: absolute;
+  z-index: 1000;
+  border: 1px solid;
+  border-radius: 5px;
+  background: #adbec9;
+  align-items: center;
+  flex-direction: row;
+  top: 10px;
+  left: 10px;
 `;
 
 const RadioControl = ({ currentRoute, availableRoutes, updateBusRoute }) => {
   const [selected, setSelected] = useState(currentRoute);
 
   return (
-    <Box align="start">
+    <ButtonWrapper>
       {availableRoutes.map((label) => (
         <StyledBox key={label} margin={{ vertical: "small" }}>
           <RadioButton
@@ -25,7 +37,7 @@ const RadioControl = ({ currentRoute, availableRoutes, updateBusRoute }) => {
           />
         </StyledBox>
       ))}
-    </Box>
+    </ButtonWrapper>
   );
 };
 

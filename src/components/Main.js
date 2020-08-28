@@ -13,12 +13,12 @@ class Main extends Component {
   render() {
     return (
       <>
-        <Mapbox currentRoute={this.state.currentRoute} />
         <RadioControl
           currentRoute={this.state.currentRoute}
           availableRoutes={this.state.availableRoutes}
           updateBusRoute={this.updateBusRoute}
         />
+        <Mapbox currentRoute={this.state.currentRoute} />
       </>
     );
   }

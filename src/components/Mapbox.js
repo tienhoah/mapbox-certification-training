@@ -1,8 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import translink_routes from "../apis/translink_routes";
-import _ from "lodash";
+import PopupComp from "./Popup";
 import useInterval from "./UseInterval";
 
 const styles = {
@@ -11,29 +12,12 @@ const styles = {
   position: "absolute",
 };
 
-const createPopup = function (feature) {
-  const { vehicle_no, destination, record_time } = feature.properties;
-  return !_.isEmpty(feature)
-    ? "<div><p><strong>Vehicle Number: </strong><span>" +
-        vehicle_no +
-        "</span></p><p>Destination: <span>" +
-        destination +
-        "</span></p><p>Record Time: <span>" +
-        record_time +
-        "</span></p></div>"
-    : "<p>No content</p>";
-};
-
 const Mapbox = ({ currentRoute }) => {
   const mapContainer = useRef(null);
+  const popUpRef = useRef(new mapboxgl.Popup({ offset: 10 }));
   const [map, setMap] = useState(null);
 
-  const fetchBusRoute = (map, newRoute) => {
-    const popUp = new mapboxgl.Popup({
-      closeButton: false,
-      closeOnClick: false,
-    });
-
+  const fetchBusRoute = useCallback(function (map, newRoute) {
     translink_routes
       .get("", {
         params: {
@@ -54,6 +38,8 @@ const Mapbox = ({ currentRoute }) => {
             direction: bus.Direction,
             destination: bus.Destination,
             coordinates: busCoordinates,
+            route_map: bus.RouteMap,
+            route_no: bus.RouteNo,
           };
           const busLatLng = {
             type: "Point",
@@ -76,20 +62,24 @@ const Mapbox = ({ currentRoute }) => {
     map.on("mouseenter", "bus", function (e) {
       map.getCanvas().style.cursor = "pointer";
       const coordinates = e.features[0].geometry.coordinates.slice();
-      const feature = createPopup(e.features[0]);
 
       while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
       }
 
-      popUp.setLngLat(coordinates).setHTML(feature).addTo(map);
+      const popupNode = document.createElement("div");
+      ReactDOM.render(<PopupComp feature={e.features[0]} />, popupNode);
+
+      popUpRef.current
+        .setLngLat(coordinates)
+        .setDOMContent(popupNode)
+        .addTo(map);
     });
 
     map.on("mouseleave", "bus", function () {
       map.getCanvas().style.cursor = "";
-      popUp.remove();
     });
-  };
+  }, []);
 
   useEffect(() => {
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
@@ -98,8 +88,8 @@ const Mapbox = ({ currentRoute }) => {
       const map = new mapboxgl.Map({
         container: mapContainer.current,
         style: "mapbox://styles/nickhoang11/ckeaaht6x03hz19plpnhqkg6h",
-        center: [-123.12, 49.26427],
-        zoom: 12,
+        center: [-123.11001, 49.26427],
+        zoom: 11.5,
       });
 
       map.on("load", () => {
@@ -110,34 +100,53 @@ const Mapbox = ({ currentRoute }) => {
           tileSize: 256,
         });
 
-        map.addSource("bus", {
-          type: "geojson",
-          data: { type: "FeatureCollection", features: [] },
-        });
+        map.loadImage(
+          "https://upload.wikimedia.org/wikipedia/commons/c/c4/Translinkbus.png",
+          function (error, image) {
+            if (error) throw error;
+            map.addImage("blue-bus", image);
+            map.addSource("bus", {
+              type: "geojson",
+              data: { type: "FeatureCollection", features: [] },
+            });
 
-        map.addLayer({
-          id: "bus",
-          type: "symbol",
-          source: "bus",
-          layout: {
-            "icon-image": "bus",
-            "icon-allow-overlap": true,
-          },
-          paint: {
-            "icon-color": "#00ff00",
-          },
-        });
+            map.addLayer({
+              id: "bus",
+              type: "symbol",
+              source: "bus",
+              layout: {
+                "icon-image": [
+                  "case",
+                  ["==", ["get", "direction"], "WEST"],
+                  "bus",
+                  ["==", ["get", "direction"], "SOUTH"],
+                  "bus",
+                  "blue-bus",
+                ],
+                "icon-size": [
+                  "case",
+                  ["==", ["get", "direction"], "WEST"],
+                  1.1,
+                  ["==", ["get", "direction"], "SOUTH"],
+                  1.1,
+                  0.4,
+                ],
+                "icon-allow-overlap": true,
+              },
+            });
 
-        map.addLayer(
-          {
-            id: "satellite",
-            source: "satellite-map",
-            type: "raster",
-            layout: {
-              visibility: "none",
-            },
-          },
-          "bus"
+            map.addLayer(
+              {
+                id: "satellite",
+                source: "satellite-map",
+                type: "raster",
+                layout: {
+                  visibility: "none",
+                },
+              },
+              "bus"
+            );
+          }
         );
 
         map.on("zoom", () => {
@@ -147,6 +156,13 @@ const Mapbox = ({ currentRoute }) => {
             map.setLayoutProperty("satellite", "visibility", "none");
           }
         });
+
+        map.on("click", "bus", function (e) {
+          map.flyTo({
+            center: e.features[0].geometry.coordinates,
+            speed: 0.3,
+          });
+        });
       });
     };
 
@@ -155,8 +171,7 @@ const Mapbox = ({ currentRoute }) => {
     } else {
       fetchBusRoute(map, currentRoute);
     }
-    
-  }, [currentRoute, map]);
+  }, [currentRoute, fetchBusRoute, map]);
 
   useInterval(() => {
     if (map) fetchBusRoute(map, currentRoute);
