@@ -19,7 +19,6 @@ const useStyles = makeStyles({
     background: "#bfd5df",
     top: 10,
     right: 15,
-    width: 200
   },
 });
 
