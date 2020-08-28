@@ -20,6 +20,9 @@ const Popup = ({ feature }) => {
     <div id={`popup-${vehicle_no}`}>
       <h3>Vehicle Number-{vehicle_no}</h3>
       <div>
+        <ItemStyle>Bus No:</ItemStyle> <strong>{route_no}</strong>
+      </div>
+      <div>
         <ItemStyle>Destination:</ItemStyle> {destination}
       </div>
       <div>

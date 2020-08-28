@@ -88,8 +88,8 @@ const Mapbox = ({ currentRoute }) => {
       const map = new mapboxgl.Map({
         container: mapContainer.current,
         style: "mapbox://styles/nickhoang11/ckeaaht6x03hz19plpnhqkg6h",
-        center: [-123.11001, 49.26427],
-        zoom: 11.5,
+        center: [-122.98, 49.26427],
+        zoom: 11,
       });
 
       map.on("load", () => {
