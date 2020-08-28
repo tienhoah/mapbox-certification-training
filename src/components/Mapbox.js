@@ -163,6 +163,16 @@ const Mapbox = ({ currentRoute }) => {
             speed: 0.3,
           });
         });
+
+        map.addControl(
+          new mapboxgl.GeolocateControl({
+            positionOptions: {
+              enableHighAccuracy: true,
+            },
+            trackUserLocation: true,
+          }),
+          "bottom-right"
+        );
       });
     };
 
