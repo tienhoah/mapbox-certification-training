@@ -12,11 +12,11 @@ const ButtonWrapper = styled(Box)`
   z-index: 1000;
   border: 1px solid;
   border-radius: 5px;
-  background: #adbec9;
+  background: #BFD5DF;
   align-items: center;
   flex-direction: row;
-  top: 10px;
-  left: 10px;
+  bottom: 17px;
+  right: 10px;
 `;
 
 const RadioControl = ({ currentRoute, availableRoutes, updateBusRoute }) => {
