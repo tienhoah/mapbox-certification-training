@@ -1,22 +1,25 @@
 {
   "files": {
-    "main.css": "/mapbox-certification-training/static/css/main.cfcf0b88.chunk.css",
-    "main.js": "/mapbox-certification-training/static/js/main.b4c64fa9.chunk.js",
-    "main.js.map": "/mapbox-certification-training/static/js/main.b4c64fa9.chunk.js.map",
+    "main.css": "/mapbox-certification-training/static/css/main.ca0b0216.chunk.css",
+    "main.js": "/mapbox-certification-training/static/js/main.318635f4.chunk.js",
+    "main.js.map": "/mapbox-certification-training/static/js/main.318635f4.chunk.js.map",
     "runtime-main.js": "/mapbox-certification-training/static/js/runtime-main.f8178ef3.js",
     "runtime-main.js.map": "/mapbox-certification-training/static/js/runtime-main.f8178ef3.js.map",
-    "static/js/2.ddf39060.chunk.js": "/mapbox-certification-training/static/js/2.ddf39060.chunk.js",
-    "static/js/2.ddf39060.chunk.js.map": "/mapbox-certification-training/static/js/2.ddf39060.chunk.js.map",
+    "static/css/2.b4a16772.chunk.css": "/mapbox-certification-training/static/css/2.b4a16772.chunk.css",
+    "static/js/2.c7461a55.chunk.js": "/mapbox-certification-training/static/js/2.c7461a55.chunk.js",
+    "static/js/2.c7461a55.chunk.js.map": "/mapbox-certification-training/static/js/2.c7461a55.chunk.js.map",
     "index.html": "/mapbox-certification-training/index.html",
-    "precache-manifest.b5d81b4fb8e8f77a4031499c721b2edb.js": "/mapbox-certification-training/precache-manifest.b5d81b4fb8e8f77a4031499c721b2edb.js",
+    "precache-manifest.95b9db2c9a79be740e408d043b88e21b.js": "/mapbox-certification-training/precache-manifest.95b9db2c9a79be740e408d043b88e21b.js",
     "service-worker.js": "/mapbox-certification-training/service-worker.js",
-    "static/css/main.cfcf0b88.chunk.css.map": "/mapbox-certification-training/static/css/main.cfcf0b88.chunk.css.map",
-    "static/js/2.ddf39060.chunk.js.LICENSE.txt": "/mapbox-certification-training/static/js/2.ddf39060.chunk.js.LICENSE.txt"
+    "static/css/2.b4a16772.chunk.css.map": "/mapbox-certification-training/static/css/2.b4a16772.chunk.css.map",
+    "static/css/main.ca0b0216.chunk.css.map": "/mapbox-certification-training/static/css/main.ca0b0216.chunk.css.map",
+    "static/js/2.c7461a55.chunk.js.LICENSE.txt": "/mapbox-certification-training/static/js/2.c7461a55.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f8178ef3.js",
-    "static/js/2.ddf39060.chunk.js",
-    "static/css/main.cfcf0b88.chunk.css",
-    "static/js/main.b4c64fa9.chunk.js"
+    "static/css/2.b4a16772.chunk.css",
+    "static/js/2.c7461a55.chunk.js",
+    "static/css/main.ca0b0216.chunk.css",
+    "static/js/main.318635f4.chunk.js"
   ]
 }
