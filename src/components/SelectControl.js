@@ -17,8 +17,9 @@ const useStyles = makeStyles({
     position: "absolute",
     zIndex: 1000,
     background: "#bfd5df",
-    top: 20,
-    right: 20,
+    top: 10,
+    right: 15,
+    width: 200
   },
 });
 

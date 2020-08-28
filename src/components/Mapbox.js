@@ -171,7 +171,7 @@ const Mapbox = ({ currentRoute }) => {
             },
             trackUserLocation: true,
           }),
-          "bottom-right"
+          "top-left"
         );
       });
     };
