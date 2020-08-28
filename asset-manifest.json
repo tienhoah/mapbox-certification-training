@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mapbox-certification-training/static/css/main.ca0b0216.chunk.css",
-    "main.js": "/mapbox-certification-training/static/js/main.aaf836f4.chunk.js",
-    "main.js.map": "/mapbox-certification-training/static/js/main.aaf836f4.chunk.js.map",
+    "main.js": "/mapbox-certification-training/static/js/main.e533ee9b.chunk.js",
+    "main.js.map": "/mapbox-certification-training/static/js/main.e533ee9b.chunk.js.map",
     "runtime-main.js": "/mapbox-certification-training/static/js/runtime-main.f8178ef3.js",
     "runtime-main.js.map": "/mapbox-certification-training/static/js/runtime-main.f8178ef3.js.map",
     "static/css/2.b4a16772.chunk.css": "/mapbox-certification-training/static/css/2.b4a16772.chunk.css",
     "static/js/2.c2b8af2a.chunk.js": "/mapbox-certification-training/static/js/2.c2b8af2a.chunk.js",
     "static/js/2.c2b8af2a.chunk.js.map": "/mapbox-certification-training/static/js/2.c2b8af2a.chunk.js.map",
     "index.html": "/mapbox-certification-training/index.html",
-    "precache-manifest.e74c62c171f1e344fa69a331fb80d3b0.js": "/mapbox-certification-training/precache-manifest.e74c62c171f1e344fa69a331fb80d3b0.js",
+    "precache-manifest.417aedc10e743dfb02635ccc3015abcc.js": "/mapbox-certification-training/precache-manifest.417aedc10e743dfb02635ccc3015abcc.js",
     "service-worker.js": "/mapbox-certification-training/service-worker.js",
     "static/css/2.b4a16772.chunk.css.map": "/mapbox-certification-training/static/css/2.b4a16772.chunk.css.map",
     "static/css/main.ca0b0216.chunk.css.map": "/mapbox-certification-training/static/css/main.ca0b0216.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.b4a16772.chunk.css",
     "static/js/2.c2b8af2a.chunk.js",
     "static/css/main.ca0b0216.chunk.css",
-    "static/js/main.aaf836f4.chunk.js"
+    "static/js/main.e533ee9b.chunk.js"
   ]
 }
